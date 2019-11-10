@@ -3,8 +3,6 @@
     let password = document.getElementById('password');
     let generatePassword = document.getElementById('generate');
     let copyToClipboard = document.getElementById('copy');
-    // let pwLength = 0;
-    // let specials = [58, 59, 60, 61, 62, 63, 64, 91, 92, 93, 94, 95, 96, 123, 124, 125, 126];
     let sourceArray = [];
     
 
@@ -14,6 +12,8 @@
       while(pwLength > 128 || pwLength === 0 || isNaN(pwLength)) {
         pwLength = prompt('Please enter a numeric value between 0 and 128');
       }
+      if (!pwLength) return;
+
       let upper = confirm('Do you want it to have uppercase letters?');
       let lower = confirm('Do you want it to have lowercase letters?');
       let numbers = confirm('Do you want it to have numbers?');
@@ -61,25 +61,5 @@
       document.execCommand('copy');
       alert('Copied the text: ' + password.value);
     }
-    
 
-    // create a string lf length pwLength that includes any of the characters
-    // <space>!"#$%&'()*+,-./ (32-47) - special set 1 (16)
-    // 0-9 (48-57) - numbers (10)
-    // :;<=>?@ (58-64) - special set 2 (7)
-    // A-Z (65-90) - upper (26)
-    // [\]^_` (91-96) - special set 3 (6)
-    // a-z (97-122) - lower (26)
-    // {|}~ (123-126) - special set 4 (4)
-    // the full list is 33-126 (a total of 94 characters)
-    // use string.fromCharCodeAt()
-    // use Math.floor(Math.random() * Math.floor(max))
-    // this generates a number between 0 and max
-    // use 94 as max
-    // shift the result + 33
-
-    // another option: 
-
-    //NOTES
-// upper and lower bounds
 
