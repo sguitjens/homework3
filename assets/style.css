@@ -1,0 +1,16 @@
+.dashed-border {
+  border-width: 2px;
+  border-style: dashed;
+}
+
+input::placeholder {
+  text-align: center;
+}
+/* webkit solution */
+::-webkit-input-placeholder {
+  text-align:center;
+}
+/* mozilla solution */
+input:-moz-placeholder {
+  text-align:center;
+}
