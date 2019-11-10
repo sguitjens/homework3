@@ -11,15 +11,13 @@
     generatePassword.addEventListener('click', () => {
       sourceArray = [];
       let pwLength = prompt('How long do you want your password to be?');
-      // while(pwLength > 2)
+      while(pwLength > 128 || pwLength === 0 || isNaN(pwLength)) {
+        pwLength = prompt('Please enter a numeric value between 0 and 128');
+      }
       let upper = confirm('Do you want it to have uppercase letters?');
-      console.log('upper', upper); // TEST CODE
       let lower = confirm('Do you want it to have lowercase letters?');
-      console.log('lower', lower); // TEST CODE
       let numbers = confirm('Do you want it to have numbers?');
-      console.log('numbers', numbers); // TEST CODE
       let specials = confirm('Do you want it to have special characters?');
-      console.log('specials', specials); // TEST CODE
       let passwordString = '';
       sourceArray = pwGenerateFlex(upper, lower, numbers, specials);
       for(let i = 0; i < pwLength; ++i) {
@@ -33,24 +31,19 @@
     let pwGenerateFlex = (upper, lower, number, special) => {
       if(upper) {
         sourceArray = sourceArray.concat(genArray(65, 90));
-        console.log(Array.from(sourceArray, item => String.fromCharCode(item))); // TEST CODE
       }
       if(lower) {
         sourceArray = sourceArray.concat(genArray(97, 122));
-        console.log(Array.from(sourceArray, item => String.fromCharCode(item))); // TEST CODE
       }
       if(number) {
         sourceArray = sourceArray.concat(genArray(48, 57));
-        console.log(Array.from(sourceArray, item => String.fromCharCode(item))); // TEST CODE
       }
       if(special) {
         sourceArray = sourceArray.concat(genArray(32, 47));
         sourceArray = sourceArray.concat(genArray(58, 64));
         sourceArray = sourceArray.concat(genArray(91, 96));
         sourceArray = sourceArray.concat(genArray(123, 126));
-        console.log(Array.from(sourceArray, item => String.fromCharCode(item))); // TEST CODE
       }
-      console.log("sourceArray", sourceArray) // TEST CODE
       return sourceArray;
     }
 
@@ -72,11 +65,11 @@
 
     // create a string lf length pwLength that includes any of the characters
     // <space>!"#$%&'()*+,-./ (32-47) - special set 1 (16)
-    // 0-9 (48-57) - numbers
+    // 0-9 (48-57) - numbers (10)
     // :;<=>?@ (58-64) - special set 2 (7)
-    // A-Z (65-90) - upper
+    // A-Z (65-90) - upper (26)
     // [\]^_` (91-96) - special set 3 (6)
-    // a-z (97-122) - lower
+    // a-z (97-122) - lower (26)
     // {|}~ (123-126) - special set 4 (4)
     // the full list is 33-126 (a total of 94 characters)
     // use string.fromCharCodeAt()
