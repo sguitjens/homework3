@@ -5,6 +5,11 @@
 
 .rounded-button {
   border-radius: 24px;
+  white-space: normal;
+}
+
+.max-width-768 {
+  max-width: 768px;
 }
 
 input::placeholder {

@@ -9,8 +9,8 @@
     generatePassword.addEventListener('click', () => {
       sourceArray = [];
       let pwLength = prompt('How long do you want your password to be?');
-      while(pwLength > 128 || pwLength === 0 || isNaN(pwLength)) {
-        pwLength = prompt('Please enter a numeric value between 0 and 128');
+      while(pwLength > 128 || pwLength < 8 || isNaN(pwLength)) {
+        pwLength = prompt('Please enter a numeric value between 8 and 128');
       }
       if (!pwLength) return;
 
