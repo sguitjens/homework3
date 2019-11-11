@@ -7,6 +7,7 @@
     
 
     generatePassword.addEventListener('click', () => {
+      event.preventDefault();
       sourceArray = [];
       let pwLength = prompt('How long do you want your password to be?');
       while(pwLength > 128 || pwLength < 8 || isNaN(pwLength)) {
@@ -27,6 +28,11 @@
       }
       password.innerHTML = passwordString;
     });
+
+    copyToClipboard.addEventListener('click', () => {
+      event.preventDefault();
+      copyPassword();
+    })
 
     let pwGenerateFlex = (upper, lower, number, special) => {
       if(upper) {
